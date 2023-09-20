@@ -2,6 +2,7 @@ import csv
 import sys
 import termios
 import tty
+import os
 
 def getch():
     """Get a single character from the user without the need to press enter."""
@@ -13,6 +14,11 @@ def getch():
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
+
+# Prompt the user for the data file path
+data_file_path = input("Enter the path to the project folder (e.g. /Users/gisbertgurke/Documents/Projekte/germanyinc_oc_clu/build/exe.macosx-10.9-universal2-3.10 ): ")
+
+os.chdir(data_file_path)
 
 # Open the CSV file and read the data
 csv_file = "df_cleaned.csv"  # Replace with your CSV file path
