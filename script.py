@@ -1,22 +1,13 @@
 import csv
 import sys
-import termios
-import tty
+import msvcrt
 import os
 
 def getch():
-    """Get a single character from the user without the need to press enter."""
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(sys.stdin.fileno())
-        ch = sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
+    return msvcrt.getch().decode('utf-8')
 
 # Prompt the user for the data file path
-data_file_path = input("Enter the path to the project folder (e.g. /Users/gisbertgurke/Documents/Projekte/germanyinc_oc_clu/build/exe.macosx-10.9-universal2-3.10 ): ")
+data_file_path = input("Enter the path to the project folder (e.g. C:\Users\AB Engert\Documents ): ")
 
 os.chdir(data_file_path)
 
