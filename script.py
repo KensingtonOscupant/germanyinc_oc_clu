@@ -15,7 +15,7 @@ def getch():
     return ch
 
 # Open the CSV file and read the data
-csv_file = "data/combined_testing_type.csv"  # Replace with your CSV file path
+csv_file = "df_cleaned.csv"  # Replace with your CSV file path
 with open(csv_file, "r") as csvfile:
     reader = csv.DictReader(csvfile)
     data = [row for row in reader]
